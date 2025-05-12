@@ -396,6 +396,48 @@ public class SimpleGeneticSudokuSolver {
         System.out.println("Maximum generations: " + MAX_GENERATIONS);
     }
 
+    // Helper Method 10: isValidSet(int[] arr)
+    // Data Structure: Boolean
+    // Algorithm Analysis: isValidSet(int[] arr)
+    // Step 1: Check any of the inputting 1D array within Sudoku board (row, column and subgrid)
+    // Step 2: If there are duplicated numbers from 1-9 in that 1D array, return false
+    // Step 3: If not, then append that number to the integer list, and return true if all 9 number passed
+    private static boolean isValidSet(int[] arr) {
+        List<Integer> seen = new ArrayList<>();
+        for (int num : arr) {
+            if (num < 1 || num > 9) return false;
+            if (seen.contains(num)) return false;
+            seen.add(num);
+        }
+        return seen.size() == GRID_SIZE; 
+    }
+
+    // Helper Method 11: isCorrectSolved(int[][] board)
+    // Data Structure: Boolean
+    // Algorithm Analysis isCorrectSolved(int[][] board)
+    // Step 1: Use isValidSet(int[] arr) to check valid row, column and subgrid without any duplication
+    // Step 2: Return True if all above conditions are passed
+    private static boolean isCorrectSolved(int[][] board) {
+        // Check rows
+        for (int i = 0; i < GRID_SIZE; i++) {
+            if (!isValidSet(getRow(board, i))) return false;
+        }
+
+        // Check columns
+        for (int i = 0; i < GRID_SIZE; i++) {
+            if (!isValidSet(getColumn(board, i))) return false;
+        }
+
+        // Check subgrids
+        for (int i = 0; i < SUBGRID_SIZE; i++) {
+            for (int j = 0; i < SUBGRID_SIZE; i++) {
+                if (!isValidSet(getSubgrid(board, i * SUBGRID_SIZE, j * SUBGRID_SIZE))) return false;
+            }
+        }
+
+        return true;
+    }
+
     //------------------------------------------------------------------------------------------------
     // Main code
     public static void main(String[] args) {
@@ -410,6 +452,7 @@ public class SimpleGeneticSudokuSolver {
         boolean SolveMedium = false;
         boolean SolveHard = true;
 
+        // Perform Solve based on flags
         if (SolveEasy) {
             double totalTime = 0.0;
 
@@ -481,6 +524,7 @@ public class SimpleGeneticSudokuSolver {
 
         if (SolveHard) {
             double totalTime = 0.0;
+            int countSolve = 0;
 
             POPULATION_SIZE = 1000;
             MUTATION_RATE = 0.8;
@@ -499,6 +543,13 @@ public class SimpleGeneticSudokuSolver {
                 System.out.println("\nSolution of Puzzle " + (i + 1) + ":");
                 if (solution != null) {
                     printBoard(solution);
+                    if (isCorrectSolved(solution)) {
+                        System.out.println("Board " + (i + 1) + " is solved correctly!");
+                        countSolve++;
+                    }
+                    else {
+                        System.out.println("Board " + (i + 1) + " has incorrect solution");
+                    }
                 } else {
                     System.out.println("Could not find a solution within the given generations.");
                 }
@@ -508,8 +559,9 @@ public class SimpleGeneticSudokuSolver {
                 totalTime += solveTime;
             }
 
-            printGAConfig(POPULATION_SIZE, totalTime, MAX_GENERATIONS);
-            System.out.println("\nTotal time for " + HardSudokuBoards.size() + " Hard Sudoku Boards: " + totalTime + " seconds");
+            printGAConfig(POPULATION_SIZE, MUTATION_RATE, MAX_GENERATIONS);
+            System.out.println("\nThe algorithm solve correctly " + countSolve + " out of " + HardSudokuBoards.size() + " Hard Sudoku Boards");
+            System.out.println("Total time for " + HardSudokuBoards.size() + " Hard Sudoku Boards: " + totalTime + " seconds");
         }
         
     }
