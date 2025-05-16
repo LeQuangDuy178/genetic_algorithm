@@ -1,8 +1,3 @@
-package genetic_algorithm;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class SudokuData {
 
         public static List<int[][]> GetEasyBoards() {
@@ -152,7 +147,7 @@ public class SudokuData {
                 return EasySudokuBoards;
         }
 
-        public static List<int[][]> GetMediumBoard() {
+        public static List<int[][]> GetMediumBoards() {
                 List<int[][]> MediumSudokuBoards = new ArrayList<>();
 
                 // First Sudoku grid
@@ -442,5 +437,81 @@ public class SudokuData {
                 HardSudokuBoards.add(sudoku10);
 
                 return HardSudokuBoards;
+        }
+
+        public static List<int[][]> GetVeryHardBoards() {
+                List<int[][]> VeryHardSudokuBoards = new ArrayList<>();
+
+                // First Very Hard Sudoku grid
+                int[][] sudoku1 = {
+                        {7, 0, 9, 0, 4, 0, 0, 0, 0},
+                        {0, 0, 3, 0, 0, 0, 6, 0, 5},
+                        {0, 0, 0, 0, 1, 2, 0, 0, 0},
+                        {0, 6, 5, 4, 0, 0, 7, 0, 0},
+                        {0, 9, 0, 0, 3, 6, 0, 2, 0},
+                        {2, 0, 0, 7, 0, 0, 5, 0, 0},
+                        {9, 7, 0, 2, 0, 0, 0, 5, 0},
+                        {0, 4, 0, 1, 0, 0, 0, 9, 7},
+                        {0, 0, 0, 0, 9, 7, 2, 6, 4}
+                };
+                VeryHardSudokuBoards.add(sudoku1);
+
+                // Second Very Hard Sudoku grid
+                int[][] sudoku2 = {
+                        {0, 0, 7, 0, 0, 0, 0, 0, 0},
+                        {0, 0, 0, 0, 6, 3, 0, 0, 0},
+                        {6, 0, 5, 0, 9, 0, 2, 4, 0},
+                        {0, 4, 0, 0, 8, 0, 0, 3, 0},
+                        {2, 1, 0, 6, 0, 4, 0, 9, 0},
+                        {8, 0, 0, 0, 0, 1, 4, 0, 5},
+                        {0, 6, 2, 8, 0, 0, 0, 0, 3},
+                        {3, 0, 1, 0, 0, 0, 9, 8, 7},
+                        {0, 0, 0, 1, 0, 5, 0, 0, 4}
+                };
+                VeryHardSudokuBoards.add(sudoku2);
+
+                // Third Very Hard Sudoku grid
+                int[][] sudoku3 = {
+                        {0, 7, 8, 1, 0, 5, 0, 0, 0},
+                        {0, 4, 0, 8, 0, 0, 3, 0, 1},
+                        {0, 3, 0, 2, 0, 0, 7, 9, 0},
+                        {0, 0, 9, 0, 0, 1, 0, 4, 0},
+                        {4, 0, 0, 0, 8, 7, 2, 1, 0},
+                        {1, 0, 3, 6, 5, 0, 0, 0, 0},
+                        {2, 0, 0, 5, 6, 0, 0, 0, 7},
+                        {3, 6, 0, 0, 0, 8, 0, 0, 4},
+                        {0, 9, 0, 0, 0, 0, 0, 0, 5}
+                };
+                VeryHardSudokuBoards.add(sudoku3);
+
+                // Fourth Very Hard Sudoku grid
+                int[][] sudoku4 = {
+                        {0, 0, 2, 0, 0, 0, 7, 9, 0},
+                        {0, 3, 1, 9, 0, 0, 0, 0, 2},
+                        {0, 7, 8, 0, 0, 0, 0, 5, 1},
+                        {4, 5, 0, 1, 3, 2, 0, 0, 0},
+                        {1, 0, 0, 0, 9, 8, 0, 0, 6},
+                        {7, 0, 0, 0, 0, 0, 2, 0, 3},
+                        {8, 9, 7, 0, 0, 6, 0, 0, 0},
+                        {0, 0, 0, 8, 0, 0, 6, 3, 0},
+                        {3, 0, 5, 2, 0, 0, 9, 0, 7}
+                };
+                VeryHardSudokuBoards.add(sudoku4);
+
+                // Fifth Very Hard Sudoku grid
+                int[][] sudoku5 = {
+                        {0, 8, 0, 0, 6, 5, 4, 0, 0},
+                        {0, 0, 0, 0, 0, 0, 7, 0, 0},
+                        {4, 0, 1, 0, 0, 0, 0, 0, 3},
+                        {3, 0, 2, 7, 0, 0, 0, 5, 0},
+                        {0, 0, 5, 0, 2, 3, 9, 0, 0},
+                        {0, 0, 8, 0, 0, 0, 3, 0, 1},
+                        {2, 6, 0, 0, 0, 0, 0, 7, 9},
+                        {0, 9, 0, 6, 0, 2, 0, 3, 0},
+                        {0, 0, 0, 0, 7, 8, 0, 0, 6}
+                };
+                VeryHardSudokuBoards.add(sudoku5);
+
+                return VeryHardSudokuBoards;
         }
 }
