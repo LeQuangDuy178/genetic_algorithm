@@ -1,5 +1,3 @@
-import java.util.Comparator;
-
 public interface List<T> {
     // insert a value at a specific index (index starts from zero)
     // if the index is invalid, return false
